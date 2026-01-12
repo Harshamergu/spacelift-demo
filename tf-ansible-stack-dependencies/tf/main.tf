@@ -45,7 +45,7 @@ locals {
 
 resource "aws_key_pair" "ssh_key" {
   key_name   = "ec2"
-  public_key = file("/mnt/workspace/id_ed25519.pub")
+  id_ed25519.pub = file(var.id_ed25519.pub)
 }
 
 resource "aws_instance" "this" {
