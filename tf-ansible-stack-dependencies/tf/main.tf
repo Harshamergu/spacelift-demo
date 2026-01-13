@@ -57,6 +57,12 @@ resource "null_resource" "run_ansible" {
 
   provisioner "local-exec" {
     command = <<EOT
+      set -e
+
+      echo "Installing Ansible..."
+      apt-get update -y
+      apt-get install -y ansible
+
       echo "[web]" > inventory.ini
       %{ for k, v in aws_instance.this ~}
       echo "${v.public_ip} ansible_user=ubuntu" >> inventory.ini
@@ -69,4 +75,5 @@ resource "null_resource" "run_ansible" {
     EOT
   }
 }
+
 
