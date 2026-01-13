@@ -32,6 +32,10 @@ locals {
       ami           = data.aws_ami.ubuntu.id
       instance_type = "t2.micro"  
     }
+    virtual-3 = {
+      ami           = data.aws_ami.ubuntu.id
+      instance_type = "t2.micro"  
+    }
   }
 }
 
