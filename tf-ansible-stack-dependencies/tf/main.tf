@@ -24,19 +24,19 @@ data "aws_ami" "ubuntu" {
 
 locals {
   instances = {
-    virtual-1 = {
+    aws-virtual-1 = {
       ami           = data.aws_ami.ubuntu.id
       instance_type = "t2.micro"
     }
-    virtual-2 = {
+    aws-virtual-2 = {
       ami           = data.aws_ami.ubuntu.id
       instance_type = "t2.micro"  
     }
-    virtual-3 = {
+    aws-virtual-3 = {
       ami           = data.aws_ami.ubuntu.id
       instance_type = "t2.micro"  
     }
-    virtual-4 = {
+    aws-virtual-4 = {
       ami           = data.aws_ami.ubuntu.id
       instance_type = "t2.micro"  
     }
