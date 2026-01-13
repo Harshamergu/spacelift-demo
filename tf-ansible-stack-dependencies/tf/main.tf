@@ -52,28 +52,4 @@ resource "aws_instance" "this" {
   }
 }
 
-resource "null_resource" "run_ansible" {
-  depends_on = [aws_instance.this]
-
-  provisioner "local-exec" {
-    command = <<EOT
-      set -e
-
-      echo "Installing Ansible..."
-      apt-get update -y
-      apt-get install -y ansible
-
-      echo "[web]" > inventory.ini
-      %{ for k, v in aws_instance.this ~}
-      echo "${v.public_ip} ansible_user=ubuntu" >> inventory.ini
-      %{ endfor ~}
-
-      ansible-playbook \
-        -i inventory.ini \
-        --private-key /mnt/workspace/id_ed25519 \
-        ../ansible/install_nginx.yaml
-    EOT
-  }
-}
-
 
