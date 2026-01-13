@@ -24,11 +24,11 @@ data "aws_ami" "ubuntu" {
 
 locals {
   instances = {
-    virtual-computer-1 = {
+    virtual-1 = {
       ami           = data.aws_ami.ubuntu.id
       instance_type = "t2.micro"
     }
-    virtual-computer-2 = {
+    virtual-2 = {
       ami           = data.aws_ami.ubuntu.id
       instance_type = "t2.micro"  
     }
